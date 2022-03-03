@@ -1,7 +1,7 @@
 ---
 - name: Clone repository
   git:
-    repo: git@github.com/{{ repo_name }}
+    repo: git@github.com:{{ repo_name }}.git
     dest: /home/{{ repo_name }}
     clone: yes
     update: yes
