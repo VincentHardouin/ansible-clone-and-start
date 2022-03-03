@@ -1,0 +1,19 @@
+---
+- name: Clone repository
+  git:
+    repo: git@github.com/{{ repo_name }}
+    dest: /home/{{ repo_name }}
+    clone: yes
+    update: yes
+
+- name: Verify docker-compose
+  stat:
+    path: /home/{{ repo_name }}/docker-compose.yml
+  register: docker_compose_data
+
+- name: Start docker-compose in daemon
+  command:
+    chdir: /home/{{ repo_name }}
+    cmd: docker-compose up -d
+  when: docker_compose_data.stats.exists
+
