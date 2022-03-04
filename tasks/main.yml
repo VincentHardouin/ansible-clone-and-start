@@ -5,6 +5,7 @@
     dest: /home/{{ repo_name }}
     clone: yes
     update: yes
+    accept_hostkey: yes
 
 - name: Verify docker-compose
   stat:
@@ -15,5 +16,5 @@
   command:
     chdir: /home/{{ repo_name }}
     cmd: docker-compose up -d
-  when: docker_compose_data.stats.exists
+  when: docker_compose_data.stat.exists
 
