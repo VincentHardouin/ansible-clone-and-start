@@ -1,7 +1,4 @@
 ---
-- include_role:
-  name: community.docker
-
 - name: Clone repository
   git:
     repo: git@github.com:{{ repo_name }}.git
