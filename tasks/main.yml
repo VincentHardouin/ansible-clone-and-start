@@ -14,6 +14,6 @@
 
 - name: Start docker-compose in daemon
   community.docker.docker_compose:
-    project_src: /home/VincentHardouin/sish
+    project_src: /home/{{ repo_name }}
   when: docker_compose_data.stat.exists
 
