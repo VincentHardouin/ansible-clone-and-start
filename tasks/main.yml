@@ -1,4 +1,7 @@
 ---
+- include_role:
+  name: community.docker
+
 - name: Clone repository
   git:
     repo: git@github.com:{{ repo_name }}.git
@@ -13,8 +16,7 @@
   register: docker_compose_data
 
 - name: Start docker-compose in daemon
-  command:
-    chdir: /home/{{ repo_name }}
-    cmd: docker-compose up -d
+  community.docker.docker_compose:
+    project_src: /home/VincentHardouin/sish
   when: docker_compose_data.stat.exists
 
